@@ -18,9 +18,13 @@ In this release, all LUA modules and parsed Text strings are available as exampl
 
 Note: some of the LUA modules are loaded at runtime, they are not currently included in this example.
 
+________________________________________________________________________________
+
 Following are some steps in getting this work done yourself. I will add more steps as I get time to describe them.
 
-Download and extract:
+Simple things first.
+
+Download and extract apk:
 ```
 Create temp directory, say c:\temp\gl\gl190\.
 Download latest apk from https://www.apk4fun.com to c:\temp\gl\gl190\gl190.apk.
@@ -30,7 +34,7 @@ Extract contents of c:\temp\gl\gl190\assets\tap4fun.zip into c:\temp\gl\gl190\as
 This will create a file structure similar as the path on an Android device: tap4fun\galaxylegend\AppOriginalData\.
 ```
 
-Java program parse GL index and text files (texttool.java):
+Create Java program to parse GL index and text files (texttool.java):
 ```java
 import java.io.*;
 import java.lang.*;
@@ -48,8 +52,8 @@ public class texttool
     public String description;
   }
 
-	public static void main(String[] args) throws Exception
-	{
+  public static void main(String[] args) throws Exception
+  {
     if (args.length != 2) {
       System.err.println("Usage: texttool idxFile txtFile");
       System.exit(1);
@@ -95,11 +99,11 @@ public class texttool
       entries.put(i+1, entry);
       System.out.println("\"" + entry.name + "\",\"" + entry.description + "\"");
     }
-	}
+  }
 }
 ```
 
-Compile and run:
+Compile Java program, run, and generate text file output in CSV format:
 ```
 Download and install Java JDK.
 javac texttool.java
