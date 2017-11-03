@@ -15,3 +15,5 @@ Text strings are split into index and language specific files.
 Current version is 1.9.0.
 
 In this release, all LUA modules and parsed Text strings are available as examples of decompiled code.
+
+Note: some of the LUA modules are loaded at runtime, they are not currnetly included in this example.
