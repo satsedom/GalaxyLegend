@@ -177,10 +177,13 @@ xortool MAIL.luaq MAIL.tfl 1
 ```
 
 Backup MAIL.lua in /sdcard/tap4fun/galaxylegend/Documents/ as MAIL.lua.bak
+
 Copy custom_V1vip_explimit.tfl to /sdcard/tap4fun/galaxylegend/Documents/
+
 Copy MAIL.lua to /sdcard/tap4fun/galaxylegend/Documents/
 
 I went much further with this and scripted more than 60% of daily tasks.
+
 Tap changes some server calls now and again, so need to verify changes are still current at every release.
 
 Maybe I will post these customization later for you to check out.
