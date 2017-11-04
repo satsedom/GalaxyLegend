@@ -107,4 +107,82 @@ cd c:\temp\gl\gl190\assets\tap4fun\galaxylegend\AppOriginalData\data1\
 java unluac\Main AutoUpdateInit.luaq > AutoUpdateInit.lua
 ```
 
-More details to come...
+Now the fun begins.
+
+At this point we can make certain changes by overlapping game code with out own.
+
+To do that, we need to determine which module to override and make a copy of it.
+
+Then, make the necessary code changes and compile the module.
+
+Lastly, we need to inject it into the game. This can be achieved several ways.
+
+One way is to use one of the existing TFL files in the main directory /sdcard/tap4fun/galaxylegend/Documents/ and make it load our customized module.
+
+So this takes practice with trial and error to work correctly. Once you understand how LUA and T4F server calls work, it gets easier.
+
+Here is an example of LUA code removing VIP limits for various actions on the client:
+```
+--custom_V1vip_explimit.luaq
+--Original file: V1vip_explimit.lua (in the provided source code zip file)
+--remove vip limits on the client
+local limit = GameData.vip_exp.limit
+limit.one_key_collect           = {limit = "one_key_collect"          , vip_level = 0, player_level = 0}
+limit.skip_battle               = {limit = "skip_battle"              , vip_level = 0, player_level = 0}
+limit.krypton_auto_compose      = {limit = "krypton_auto_compose"     , vip_level = 0, player_level = 0}
+limit.krypton_auto_decompose    = {limit = "krypton_auto_decompose"   , vip_level = 0, player_level = 0}
+limit.no_enhance_cd             = {limit = "no_enhance_cd"            , vip_level = 0, player_level = 0}
+limit.wd_skip_battle            = {limit = "wd_skip_battle"           , vip_level = 0, player_level = 0}
+limit.one_key_equip_enhance     = {limit = "one_key_equip_enhance"    , vip_level = 0, player_level = 0}
+limit.mine_speed_up             = {limit = "mine_speed_up"            , vip_level = 0, player_level = 0}
+limit.clear_mine_atk_cd         = {limit = "clear_mine_atk_cd"        , vip_level = 0, player_level = 0}
+limit.one_key_technology_update = {limit = "one_key_technology_update", vip_level = 0, player_level = 0}
+limit.remodel_speed_up          = {limit = "remodel_speed_up"         , vip_level = 0, player_level = 0}
+limit.commmon_skip_battle       = {limit = "commmon_skip_battle"      , vip_level = 0, player_level = 0}
+limit.ac_skip_battle            = {limit = "ac_skip_battle"           , vip_level = 0, player_level = 0}
+limit.climbtower_skip_battle    = {limit = "climbtower_skip_battle"   , vip_level = 0, player_level = 0}
+limit.arena_skip_battle         = {limit = "arena_skip_battle     "   , vip_level = 0, player_level = 0}
+```
+
+Needless to say, the original values were not 0's.
+
+Let's compile this module.
+```
+luac -o custom_V1vip_explimit.luaq custom_V1vip_explimit.lua
+```
+
+Them, we need to encrypt it.
+```
+xortool custom_V1vip_explimit.luaq custom_V1vip_explimit.tfl 1
+```
+
+Now, we need to inject it via an existing module and prevent it from being overwritten.
+```
+Create MAIL.lua with following code:
+local GameMail = LuaObjectManager:GetLuaObject("GameMail")
+function GameMail.executeSave()
+  return
+end
+ext.dofile("custom_V1vip_explimit.tfl")
+```
+
+Let's compile this other module.
+```
+luac -o custom_V1vip_explimit.luaq custom_V1vip_explimit.lua
+```
+
+Then, we also need to encrypt it.
+```
+xortool MAIL.luaq MAIL.tfl 1
+```
+
+Backup MAIL.lua in /sdcard/tap4fun/galaxylegend/Documents/ as MAIL.lua.bak
+Copy custom_V1vip_explimit.tfl to /sdcard/tap4fun/galaxylegend/Documents/
+Copy MAIL.lua to /sdcard/tap4fun/galaxylegend/Documents/
+
+I went much further with this and scripted more than 60% of daily tasks.
+Tap changes some server calls now and again, so need to verify changes are still current at every release.
+
+Maybe I will post these customization later for you to check out.
+
+That's it!
