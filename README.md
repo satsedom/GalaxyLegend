@@ -180,7 +180,7 @@ Backup MAIL.lua in /sdcard/tap4fun/galaxylegend/Documents/ as MAIL.lua.bak
 
 Copy custom_V1vip_explimit.tfl to /sdcard/tap4fun/galaxylegend/Documents/
 
-Copy MAIL.lua to /sdcard/tap4fun/galaxylegend/Documents/
+Copy MAIL.tfl to /sdcard/tap4fun/galaxylegend/Documents/
 
 I went much further with this and scripted more than 60% of daily tasks.
 
