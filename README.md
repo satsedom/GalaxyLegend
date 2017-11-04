@@ -49,8 +49,10 @@ java texttool c:\temp\gl\gl190\assets\tap4fun\galaxylegend\AppOriginalData\data2
 Difficult things next.
 
 Notes:
-  PAK files are archives of files using Gameloft/Glitch Engine Rotating XOR Encryption/Decryption.
-  TFL files are LUA binaries using Gameloft/Glitch Engine Rotating XOR Encryption/Decryption.
+```
+PAK files are archives of files using Gameloft/Glitch Engine Rotating XOR Encryption/Decryption.
+TFL files are LUA binaries using Gameloft/Glitch Engine Rotating XOR Encryption/Decryption.
+```
 
 Install Unix Shell on Windows:
 ```
