@@ -34,12 +34,55 @@ Extract contents of c:\temp\gl\gl190\assets\tap4fun.zip into c:\temp\gl\gl190\as
 This will create a file structure similar as the path on an Android device: tap4fun\galaxylegend\AppOriginalData\.
 ```
 
-Compile Java program, run, and generate text file outputs in CSV format:
+Compile texttool program:
 ```
 Download and install Java JDK.
 javac texttool.java
+```
+
+Parse Text index and language files into readable CSV format using texttool:
+```
 Execute for each text file:
 java texttool c:\temp\gl\gl190\assets\tap4fun\galaxylegend\AppOriginalData\data2\text\item.idx c:\temp\gl\gl190\assets\tap4fun\galaxylegend\AppOriginalData\data2\text\item.en > item.csv
 ```
 
-More to come...
+Difficult things next.
+
+Notes:
+  PAK files are archives of files using Gameloft/Glitch Engine Rotating XOR Encryption/Decryption.
+  TFL files are LUA binaries using Gameloft/Glitch Engine Rotating XOR Encryption/Decryption.
+
+Install Unix Shell on Windows:
+```
+Download and install Cygwin. This makes it easy to create and execute scripts.
+Choose to install gcc. We need 32bit C compiler specifically.
+Choose to install make.
+More details to come...
+```
+
+Compile xortool program:
+```
+More details to come...
+```
+
+Extract PAK archives using xortool:
+```
+More details to come...
+```
+
+Decrypt TFL files into LUAQ binary executable format using xortool:
+```
+More details to come...
+```
+
+Modify LUA decompiler OP codes from defaults to T4F rearranged codes:
+```
+More details to come...
+```
+
+Decompile LUAQ executables into readable LUA programs:
+```
+More details to come...
+```
+
+More details to come...
