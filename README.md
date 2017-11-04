@@ -109,7 +109,7 @@ java unluac\Main AutoUpdateInit.luaq > AutoUpdateInit.lua
 
 Now the fun begins.
 
-At this point we can make certain changes by overlapping game code with out own.
+At this point we can make certain changes by overlapping game code with our own.
 
 To do that, we need to determine which module to override and make a copy of it.
 
@@ -151,7 +151,7 @@ Let's compile this module.
 luac -o custom_V1vip_explimit.luaq custom_V1vip_explimit.lua
 ```
 
-Them, we need to encrypt it.
+Then, we need to encrypt it.
 ```
 xortool custom_V1vip_explimit.luaq custom_V1vip_explimit.tfl 1
 ```
@@ -168,7 +168,7 @@ ext.dofile("custom_V1vip_explimit.tfl")
 
 Let's compile this other module.
 ```
-luac -o custom_V1vip_explimit.luaq custom_V1vip_explimit.lua
+luac -o MAIL.luaq MAIL.lua
 ```
 
 Then, we also need to encrypt it.
